@@ -1,0 +1,51 @@
+#!name=百度翻译去广告
+#!desc=移除开屏广告、横幅广告，精简我的页面。
+#!openUrl=https://apps.apple.com/app/id605670941
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/BaiduTranslate.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+request if ${url} ~= /^https:\/\/fanyi-app\.baidu\.com\/transapp\/v2\/api\/launch\/config\?/i then reject_dict(200)
+
+response if ${url} ~= /^https:\/\/fanyi-app\.baidu\.com\/transapp\/comment\/my\?/i then response.json.delete(["data.taskBanner", "data.act"])
+
+response if ${url} ~= /^https:\/\/fanyi-app\.baidu\.com\/transapp\/recitewd\/myplan\?/i then response.json.delete(["data.activityRec", "data.activityRecList"])
+
+request if ${url} ~= /^https:\/\/fanyi-app\.baidu\.com\/static\/react-activity\/page\/courseBoutique\.html\?/i then reject(404)
+request if ${url} ~= /^https?:\/\/mobads-pre-config\.cdn\.bcebos\.com\/preload\.php/i then reject(200)
+
+[Rule]
+DOMAIN, afd.baidu.com, REJECT
+DOMAIN, als.baidu.com, REJECT
+DOMAIN, bgg.baidu.com, REJECT
+DOMAIN, cpro.baidustatic.com, REJECT
+DOMAIN, feed-image.baidu.com, REJECT
+DOMAIN, click-bes.baidu.com, REJECT
+DOMAIN, eclick.baidu.com, REJECT
+DOMAIN, mobads-logs.baidu.com, REJECT
+DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
+DOMAIN, nadvideo2.baidu.com, REJECT
+DOMAIN, wn.pos.baidu.com, REJECT
+DOMAIN, miniapp-ad.cdn.bcebos.com, REJECT
+DOMAIN, hm.baidu.com, REJECT
+DOMAIN, dlswbr.baidu.com, REJECT
+DOMAIN, miao.baidu.com, REJECT
+DOMAIN-SUFFIX, union.baidu.cn, REJECT
+DOMAIN-SUFFIX, union.baidu.com, REJECT
+DOMAIN, httpdns.baidu.com, REJECT
+DOMAIN, httpsdns.baidu.com, REJECT
+DOMAIN, httpdns.bcelive.com, REJECT
+DOMAIN, httpdns.baidubce.com, REJECT
+DOMAIN, httpdns.n.shifen.com, REJECT
+IP-CIDR, 186.76.76.200/32, REJECT, no-resolve
+IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
+
+[MitM]
+hostname=fanyi-app.baidu.com, mobads-pre-config.cdn.bcebos.com

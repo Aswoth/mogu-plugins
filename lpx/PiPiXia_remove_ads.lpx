@@ -1,0 +1,46 @@
+#!name=皮皮虾去广告
+#!desc=移除开屏广告、评论区广告、视频流广告，精简我的页面。
+#!openUrl=https://apps.apple.com/app/id1393912676
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/PiPiXia.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+request if ${url} ~= /^https:\/\/api(5-lq)?\.pipix\.com\/api\/ad\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/api(5-lq)?\.pipix\.com\/bds\/banner\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/api(5-lq)?\.pipix\.com\/bds\/feed\/follow_feed\//i then reject_dict(200)
+
+response if ${url} ~= /^https:\/\/api(5-lq)?\.pipix\.com\/bds\/feed\/stream\/v2\//i then response.json.jq(".data.data |= map(select(has(\"ad_info\") | not))")
+
+response if ${url} ~= /^https:\/\/api(5-lq)?\.pipix\.com\/bds\/user\/check_in\//i then response.json.jq(".data.profile_entrances |= map(select(.title != \"放心借\" and .title != \"洋钱罐借款\")) | del(.data.pet_interface_message)")
+request if ${url} ~= /^https?:\/\/api-access\.pangolin-sdk-toutiao\.com\/api\/ad\/union\/sdk/i then reject(404)
+request if ${url} ~= /^https?:\/\/toblog\.ctobsnssdk\.com/i then reject(200)
+
+[Rule]
+AND, ((DOMAIN-KEYWORD, tnc), (OR, ((DOMAIN-SUFFIX, capcutapi.com), (DOMAIN-SUFFIX, zijieapi.com), (DOMAIN-SUFFIX, isnssdk.com), (DOMAIN-SUFFIX, toutiaoapi.com), (DOMAIN-SUFFIX, bytedance.com), (DOMAIN-SUFFIX, snssdk.com), (DOMAIN-SUFFIX, sgsnssdk.com)))), DIRECT
+AND, ((DOMAIN-KEYWORD, -ad-), (DOMAIN-SUFFIX, byteimg.com)), REJECT
+AND, ((DOMAIN-KEYWORD, ads), (DOMAIN-KEYWORD, -normal.zijieapi.com)), REJECT
+DOMAIN, lf-ad-ies.bytecdn.cn, REJECT
+DOMAIN, dig.bdurl.net, REJECT
+DOMAIN, extlog.snssdk.com, REJECT
+DOMAIN, mcs.snssdk.com, REJECT
+DOMAIN-SUFFIX, bds.snssdk.com, REJECT
+DOMAIN-SUFFIX, byteadverts.com, REJECT
+DOMAIN-SUFFIX, ctobsnssdk.com, REJECT
+DOMAIN-SUFFIX, pangle.io, REJECT
+DOMAIN-KEYWORD, pangolin, REJECT
+DOMAIN-KEYWORD, pglstatp, REJECT
+DOMAIN-KEYWORD, panplayable-toutiao, REJECT
+DOMAIN-KEYWORD, -ad-sign.byteimg.com, REJECT
+DOMAIN-KEYWORD, -ad.byteoversea.com, REJECT
+DOMAIN-KEYWORD, asiad.byteactivity, REJECT
+
+[MitM]
+hostname=api.pipix.com, api5-lq.pipix.com, api-access.pangolin-sdk-toutiao*.com, api-access.pangolin-sdk-toutiao.com, ether-pack.pangolin-sdk-toutiao.com, gromore.pangolin-sdk-toutiao.com, lfd?-analytics.bytescm.com, lfd?-cdn-tos.bytescm.com, sfd?-fe-tos.pglstatp-toutiao.com, toblog.ctobsnssdk.com

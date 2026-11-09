@@ -1,0 +1,52 @@
+#!name=CC直播去广告
+#!desc=移除信息流推广和横幅，精简顶部标签。
+#!openUrl=https://apps.apple.com/app/id853008299
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/CCLive.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+response if ${url} ~= /^https:\/\/api\.cc\.163\.com\/v\d\/mgamenavigation\/navigation_list\?/i then response.json.jq(".data.info_list |= map(select(.name == \"关注\" or .name == \"推荐\" or .name == \"视频\" or .name == \"全部\"))")
+
+response if ${url} ~= /^https:\/\/api\.cc\.163\.com\/v\d\/mgamerecpage\/recommend_page\?/i then response.json.jq(".data.plugins|=map(select(.module_type!=\"banner\"))|.data.plugins|=map(select(.module_type!=\"show_list\"))|.data.plugins|=map(select(.title!=\"推荐品类\"))")
+
+response if ${url} ~= /^https:\/\/api\.cc\.163\.com\/v\d\/entpage\/live_navbar_mobile\/ios\?/i then response.json.jq(".data.top_nav |= map(select(.cn_name == \"推荐\" or .cn_name == \"星秀\" or .cn_name == \"心动交友\"))")
+
+request if ${url} ~= /^https:\/\/cc\.163\.com\/act\/m\/daily\/ad_/i then reject(404)
+request if ${url} ~= /^http:\/\/mshare\.cc\.163\.com\/mshare\/startadv_mobile_v\d\?/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/appapi\.cc\.163\.com\/v\d\/mixfloatingwindow\/floating_windows\?/i then reject_dict(200)
+
+request if ${url} ~= /^http:\/\/api\.cc\.163\.com\/v1\/mpopuprecommend\/exit_room_conf$/i then reject_dict(200)
+request if ${url} ~= /^https?:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/http\/urlConfig\.do$/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/course\/tab\/translateTab/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/homepage\/tile/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/api-overmind\.youdao\.com\/openapi\/get\/luna\/dict\/dict-mobile\/prod\/dictCommonConfig/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/cdke\.youdao\.com\/course3\/recommend\/dict\/startup/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/commonsearch/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/vip\/activity\/couponinfo/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/dictusertask\/system/i then reject_dict(200)
+
+[Rule]
+DOMAIN, nex.163.com, REJECT
+DOMAIN, iad.g.163.com, REJECT
+DOMAIN, gorgon.youdao.com, REJECT
+DOMAIN-SUFFIX, adx.yixin.im, REJECT
+DOMAIN, httpdns.music.163.com, REJECT
+DOMAIN, httpdns.n.netease.com, REJECT
+DOMAIN, httpdns-sdk.n.netease.com, REJECT
+DOMAIN, httpdns.yunxindns.com, REJECT
+DOMAIN, lofter.httpdns.c.163.com, REJECT
+DOMAIN, music.httpdns.c.163.com, REJECT
+IP-CIDR, 59.111.239.61/32, REJECT, no-resolve
+IP-CIDR, 59.111.239.62/32, REJECT, no-resolve
+IP-CIDR, 115.236.121.51/32, REJECT, no-resolve
+IP-CIDR, 115.236.121.195/32, REJECT, no-resolve
+
+[MitM]
+hostname=api.cc.163.com, cc.163.com, mshare.cc.163.com, appapi.cc.163.com, appconf.mail.163.com, api-overmind.youdao.com, cdke.youdao.com, dict.youdao.com

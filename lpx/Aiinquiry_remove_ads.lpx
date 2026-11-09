@@ -1,0 +1,65 @@
+#!name=爱企查去广告
+#!desc=移除开屏广告、应用内弹窗、首页轮播图、悬浮部件、信息流和搜索填充词。
+#!openUrl=https://apps.apple.com/app/id1527039353
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/Aiinquiry.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/app\/bannerPicAjax/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/app\/getPopConfigAjax/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/app\/getHotTopicAjax/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/app\/getNewsReportAjax/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/app\/getExpertVideoAjax/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/apps\/getHotRecommendV2Ajax/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/m\/getLoginWordsAjax/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/app\/getAppPopSettingAjax/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/app\/commonstatusAjax/i then reject(404)
+
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/apps\/getHomeMonitorDataAjax/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/aiqicha\.baidu\.com\/apps\/searchRecommendAjax/i then reject_dict(200)
+request if ${url} ~= /^https?:\/\/mobads-pre-config\.cdn\.bcebos\.com\/preload\.php/i then reject(200)
+
+
+[Rule]
+DOMAIN, afd.baidu.com, REJECT
+DOMAIN, als.baidu.com, REJECT
+DOMAIN, bgg.baidu.com, REJECT
+DOMAIN, cpro.baidustatic.com, REJECT
+DOMAIN, feed-image.baidu.com, REJECT
+DOMAIN, click-bes.baidu.com, REJECT
+DOMAIN, eclick.baidu.com, REJECT
+DOMAIN, mobads-logs.baidu.com, REJECT
+DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
+DOMAIN, nadvideo2.baidu.com, REJECT
+DOMAIN, wn.pos.baidu.com, REJECT
+DOMAIN, miniapp-ad.cdn.bcebos.com, REJECT
+DOMAIN, hm.baidu.com, REJECT
+DOMAIN, dlswbr.baidu.com, REJECT
+DOMAIN, miao.baidu.com, REJECT
+DOMAIN-SUFFIX, union.baidu.cn, REJECT
+DOMAIN-SUFFIX, union.baidu.com, REJECT
+DOMAIN, httpdns.baidu.com, REJECT
+DOMAIN, httpsdns.baidu.com, REJECT
+DOMAIN, httpdns.bcelive.com, REJECT
+DOMAIN, httpdns.baidubce.com, REJECT
+DOMAIN, httpdns.n.shifen.com, REJECT
+IP-CIDR, 186.76.76.200/32, REJECT, no-resolve
+IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
+
+[MitM]
+hostname=aiqicha.baidu.com, mobads-pre-config.cdn.bcebos.com

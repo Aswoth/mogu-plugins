@@ -1,0 +1,79 @@
+#!name=天猫校园去广告
+#!desc=移除广告配置、开屏广告、弹窗广告、AI助手、促销模块，精简我的页面。
+#!openUrl=https://apps.apple.com/app/id6447346132
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/TmallCampus.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.tmall\.campus\.guide\.advertising\.config\.list\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.tmall\.campus\.ai\.agent\.assistant\.settings\.get\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.tmall\.campus\.guide\.delivering\.recall\.general\.data\.query\//i then reject_dict(200)
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.tmall\.campus\.guide\.app\.home\.pop\.get\//i then reject_dict(200)
+
+response if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.tmall\.kangaroo\.core\.service\.route\.fixrespagerecommend\//i then response.json.delete(["data.resultValue.data.normal-banner-resource-code", "data.resultValue.data.feeds-channel-code"])
+
+response if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.tmall\.campus\.guide\.app\.userprofile\.framework\.v\d\//i then response.json.jq("del(.data.memberBenefit, .data.memberBenefitNew) | .data.moduleSorts |= map(select(. != \"memberBenefit\" and . != \"memberBenefitNew\"))")
+request if ${url} ~= /^https:\/\/ucdc\d?-upaas\.uc\.cn\/api\/v\d\/dns_query\?/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/gw\.alicdn\.com\/mt\//i then reject(404)
+request if ${url} ~= /^https:\/\/gw\.alicdn\.com\/tfs\/.+\d{3,4}-\d{4}/i then reject(404)
+request if ${url} ~= /^https:\/\/gw\.alicdn\.com\/tps\/.+\d{3,4}-\d{4}/i then reject(404)
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome/i then reject(404)
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryloadingbanner\//i then reject_dict(200)
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.life\.popup\.get\//i then reject_dict(200)
+
+[Rule]
+DOMAIN, ossgw.alicdn.com, REJECT
+DOMAIN, ems.youku.com, REJECT
+DOMAIN, hudong.alicdn.com, REJECT
+DOMAIN, et.tanx.com, REJECT
+DOMAIN, df.tanx.com, REJECT
+DOMAIN, opehs.tanx.com, REJECT
+DOMAIN, beacon-api.aliyuncs.com, REJECT
+DOMAIN, adash.man.aliyuncs.com, REJECT
+DOMAIN, adashx.m.taobao.com, REJECT
+DOMAIN, applog.uc.cn, REJECT
+DOMAIN, atoken.m.taobao.com, REJECT
+AND, ((DOMAIN-KEYWORD, adash), (DOMAIN-SUFFIX, ut.taobao.com)), REJECT
+DOMAIN, baichuan-sdk.alicdn.com, REJECT
+DOMAIN, acs4baichuan.m.taobao.com, REJECT
+DOMAIN, nbsdk-baichuan.alicdn.com, REJECT
+DOMAIN, api.sm.cn, REJECT
+DOMAIN, c.sm.cn, REJECT
+DOMAIN, content-understand-strategy.sm.cn, REJECT
+DOMAIN, hc-ssp.sm.cn, REJECT
+DOMAIN, sdk-log.partner.sm.cn, REJECT
+DOMAIN, partner.uc.cn, REJECT
+DOMAIN, cpc-service-square.aiclk.com, REJECT
+DOMAIN, logrcv.aiclk.com, REJECT
+DOMAIN, acjs.aliyun.com, REJECT
+DOMAIN, retcode.alicdn.com, REJECT
+DOMAIN, arms-retcode.aliyuncs.com, REJECT
+DOMAIN, huichuan.sm.cn, REJECT
+DOMAIN, huichuan-mc.sm.cn, REJECT
+DOMAIN, httpdns.alicdn.com, REJECT
+DOMAIN, httpdns-api.aliyuncs.com, REJECT
+DOMAIN, httpdns-sc.aliyuncs.com, REJECT
+IP-CIDR, 203.107.1.0/24, REJECT, no-resolve
+DOMAIN, amdc.alipay.com, REJECT
+DOMAIN, ucdc.upaas.quark.cn, REJECT
+DOMAIN, httpdns.danuoyi.tbcache.com, REJECT
+URL-REGEX, "^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch", REJECT
+URL-REGEX, "^http:\/\/47\.246\.103\.9\/amdc\/mobileDispatch", REJECT
+URL-REGEX, "^http:\/\/47\.246\.103\.10\/amdc\/mobileDispatch", REJECT
+URL-REGEX, "^http:\/\/59\.82\.113\.10\/amdc\/mobileDispatch", REJECT
+URL-REGEX, "^http:\/\/59\.82\.113\.219\/amdc\/mobileDispatch", REJECT
+DOMAIN, xpis-xcdn.youku.com, REJECT
+DOMAIN, pre-xpis-xcdn.youku.com, REJECT
+DOMAIN, xpis-tel-xcdn.youku.com, REJECT
+DOMAIN, xpis-mob-xcdn.youku.com, REJECT
+
+[MitM]
+hostname=acs.m.taobao.com, ucdc2-upaas.uc.cn, acs.m.goofish.com, gw.alicdn.com, iyes.youku.com

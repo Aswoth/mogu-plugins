@@ -1,0 +1,48 @@
+#!name=网易有道词典去广告
+#!desc=移除开屏广告、弹窗广告、右上角推广。
+#!openUrl=https://apps.apple.com/app/id353115739
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/YoudaoDict.png
+#!date=2026-10-02 13:57:49
+
+[Rule]
+ad-sdk-config.youdao.com
+DOMAIN, nex.163.com, REJECT
+DOMAIN, iad.g.163.com, REJECT
+DOMAIN, gorgon.youdao.com, REJECT
+DOMAIN-SUFFIX, adx.yixin.im, REJECT
+DOMAIN, httpdns.music.163.com, REJECT
+DOMAIN, httpdns.n.netease.com, REJECT
+DOMAIN, httpdns-sdk.n.netease.com, REJECT
+DOMAIN, httpdns.yunxindns.com, REJECT
+DOMAIN, lofter.httpdns.c.163.com, REJECT
+DOMAIN, music.httpdns.c.163.com, REJECT
+IP-CIDR, 59.111.239.61/32, REJECT, no-resolve
+IP-CIDR, 59.111.239.62/32, REJECT, no-resolve
+IP-CIDR, 115.236.121.51/32, REJECT, no-resolve
+IP-CIDR, 115.236.121.195/32, REJECT, no-resolve
+
+[Rewrite]
+response if ${url} ~= /^https:\/\/dict\.youdao\.com\/homepage\/toolbar\/get\//i then response.json.delete("data.vipTag")
+
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/vip\/activity\/startup\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/vip\/activity\/retention\/configs\?/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/vip\/activity\/retention\/match\?/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/vip\/user\/paid\/guide\?/i then reject_dict(200)
+request if ${url} ~= /^https?:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/http\/urlConfig\.do$/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/course\/tab\/translateTab/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/homepage\/tile/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/api-overmind\.youdao\.com\/openapi\/get\/luna\/dict\/dict-mobile\/prod\/dictCommonConfig/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/cdke\.youdao\.com\/course3\/recommend\/dict\/startup/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/commonsearch/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/vip\/activity\/couponinfo/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/dictusertask\/system/i then reject_dict(200)
+
+[MitM]
+hostname=dict.youdao.com, appconf.mail.163.com, api-overmind.youdao.com, cdke.youdao.com

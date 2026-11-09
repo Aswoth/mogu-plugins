@@ -1,0 +1,53 @@
+#!name=网易大神去广告
+#!desc=移除开屏广告，精简大量冗余的配置文件，精简我的页面。
+#!openUrl=https://apps.apple.com/app/id1359055423
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/NetEaseGodlike.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+
+
+
+
+
+
+
+
+
+request if ${url} ~= /^https:\/\/god\.gameyw\.netease\.com\/v\d\/ad/i then reject(404)
+request if ${url} ~= /^https?:\/\/appconf\.mail\.163\.com\/mailmaster\/api\/http\/urlConfig\.do$/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/course\/tab\/translateTab/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/homepage\/tile/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/api-overmind\.youdao\.com\/openapi\/get\/luna\/dict\/dict-mobile\/prod\/dictCommonConfig/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/cdke\.youdao\.com\/course3\/recommend\/dict\/startup/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/commonsearch/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/vip\/activity\/couponinfo/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/dict\.youdao\.com\/dictusertask\/system/i then reject_dict(200)
+
+[Script]
+response if ${url} ~= /^https:\/\/app-conf\.ds\.163\.com\/v1\/app\/base\/conf\/static\/start-config\?os=ios/i then script("https://kelee.one/Resource/JavaScript/NetEaseGodlike/NetEaseGodlike_remove_ads.js") with tag="网易大神去广告", timeout=10, requires_body=true
+
+[Rule]
+DOMAIN, nex.163.com, REJECT
+DOMAIN, iad.g.163.com, REJECT
+DOMAIN, gorgon.youdao.com, REJECT
+DOMAIN-SUFFIX, adx.yixin.im, REJECT
+DOMAIN, httpdns.music.163.com, REJECT
+DOMAIN, httpdns.n.netease.com, REJECT
+DOMAIN, httpdns-sdk.n.netease.com, REJECT
+DOMAIN, httpdns.yunxindns.com, REJECT
+DOMAIN, lofter.httpdns.c.163.com, REJECT
+DOMAIN, music.httpdns.c.163.com, REJECT
+IP-CIDR, 59.111.239.61/32, REJECT, no-resolve
+IP-CIDR, 59.111.239.62/32, REJECT, no-resolve
+IP-CIDR, 115.236.121.51/32, REJECT, no-resolve
+IP-CIDR, 115.236.121.195/32, REJECT, no-resolve
+
+[MitM]
+hostname=god.gameyw.netease.com, app-conf.ds.163.com, appconf.mail.163.com, api-overmind.youdao.com, cdke.youdao.com, dict.youdao.com

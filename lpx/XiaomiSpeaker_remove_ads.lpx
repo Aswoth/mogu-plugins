@@ -1,0 +1,45 @@
+#!name=小米音箱去广告
+#!desc=移除开屏广告、应用内横幅广告及弹窗广告。
+#!openUrl=https://apps.apple.com/app/id1270594280
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/XiaomiSpeaker.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+request if ${url} ~= /^https:\/\/marketing-aibox\.v\.mitvos\.com\/advertise\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/marketing-aibox\.v\.mitvos\.com\/payGuide\/halfScreenMulti\/(home|cache)\?/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/marketing-aibox\.v\.mitvos\.com\/payGuide\/tabPage\?/i then reject_dict(200)
+request if ${url} ~= /^https?:\/\/api\.m\.mi\.com\/v\d\/app\/start/i then reject(200)
+request if ${url} ~= /^https?:\/\/api\.jr\.mi\.com\/v\d\/adv\//i then reject(200)
+request if ${url} ~= /^https?:\/\/api\.jr\.mi\.com\/jr\/api\/playScreen/i then reject(200)
+request if ${url} ~= /^https?:\/\/api-mifit.+?\.huami\.com\/discovery\/mi\/discovery\/.+?_ad\?/i then reject(200)
+request if ${url} ~= /^https?:\/\/home\.mi\.com\/cgi-op\/api\/v\d\/recommendation\/banner/i then reject(404)
+request if ${url} ~= /^https?:\/\/(api-mifit|api-mifit-\w+)\.huami\.com\/discovery\/mi\/discovery\/\w+_ad\?/i then reject(404)
+request if ${url} ~= /^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/homepage_ad\?/i then reject_img(200)
+request if ${url} ~= /^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/sleep_ad\?/i then reject_img(200)
+request if ${url} ~= /^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/sport_summary_ad\?/i then reject_img(200)
+request if ${url} ~= /^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/sport_training_ad\?/i then reject_img(200)
+request if ${url} ~= /^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/step_detail_ad\?/i then reject_img(200)
+request if ${url} ~= /^https?:\/\/api-mifit\.huami\.com\/discovery\/mi\/discovery\/training_video_ad\?/i then reject_img(200)
+request if ${url} ~= /^https:\/\/shopapi\.io\.mi\.com\/mtop\/mf\/resource\/homePage\/pageConfig/i then reject(200)
+request if ${url} ~= /^https:\/\/api-mifit-cn2\.huami\.com\/discovery\/mi\/cards\/startpage_ad/i then reject(404)
+request if ${url} ~= /^https:\/\/watch\.iot\.mi\.com\/cgi-op\/api\/v1\/watch\/health\/resource\?business=MI_WATCH_SPORT/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/watch\.iot\.mi\.com\/cgi-op\/api\/v1\/watch\/health\/resource\?business=MI_HEALTH_DEVICE_TAB_PAGE/i then reject_dict(200)
+
+[Rule]
+DOMAIN-SUFFIX, ad.xiaomi.com, REJECT
+DOMAIN, httpdns.browser.miui.com, REJECT
+DOMAIN, resolver.msg.xiaomi.net, REJECT
+DOMAIN, sdkconfig.ad.xiaomi.com, REJECT
+DOMAIN, data.mistat.xiaomi.com, REJECT
+DOMAIN, tracking.intl.miui.com, REJECT
+
+[MitM]
+hostname=marketing-aibox.v.mitvos.com, api-mifit*.huami.com, api-mifit-cn2.huami.com, api-mifit.huami.com, api.jr.mi.com, api.m.mi.com, home.mi.com, shopapi.io.mi.com, watch.iot.mi.com

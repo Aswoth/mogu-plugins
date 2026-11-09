@@ -1,0 +1,277 @@
+#!name=DJ多多去广告
+#!desc=移除开屏广告及歌单广告
+#!openUrl=https://apps.apple.com/app/id1039764887
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/DjDuoDuo.png
+#!date=2026-10-02 13:57:49
+
+[Script]
+response if ${url} ~= /^https:\/\/api\.dianyinduoduo\.com\/v4\/config\.php\?/i then script("https://kelee.one/Resource/JavaScript/DjDuoDuo/DjDuoDuo_remove_ads.js") with tag="去广告", requires_body=true
+
+[Rule]
+DOMAIN-KEYWORD, adstrategy, REJECT
+DOMAIN-SUFFIX, 1rtb.net, REJECT
+DOMAIN-SUFFIX, 1rtb.com, REJECT
+DOMAIN-SUFFIX, yfanads.com, REJECT
+DOMAIN-SUFFIX, halomobi.com, REJECT
+DOMAIN-SUFFIX, hubcloud.com.cn, REJECT
+DOMAIN-SUFFIX, inmobi.cn, REJECT
+DOMAIN-SUFFIX, uyunad.com, REJECT
+DOMAIN-SUFFIX, puata.info, REJECT
+DOMAIN-SUFFIX, supersonicads.com, REJECT
+DOMAIN-SUFFIX, appsad.cn, REJECT
+DOMAIN-SUFFIX, beizi.biz, REJECT
+DOMAIN-SUFFIX, ad-scope.com.cn, REJECT
+DOMAIN-SUFFIX, adn-plus.com.cn, REJECT
+DOMAIN-SUFFIX, adhub.com.cn, REJECT
+DOMAIN-SUFFIX, adnplus.com.cn, REJECT
+DOMAIN-SUFFIX, adscope.com.cn, REJECT
+DOMAIN-SUFFIX, adscope.cn, REJECT
+DOMAIN-SUFFIX, adscope.xyz, REJECT
+DOMAIN-SUFFIX, beizi.info, REJECT
+DOMAIN-SUFFIX, beizi.online, REJECT
+DOMAIN-SUFFIX, miaozhen.com, REJECT
+DOMAIN-SUFFIX, admobile.top, REJECT
+DOMAIN-SUFFIX, tianmu.mobi, REJECT
+DOMAIN-SUFFIX, admobile.mobi, REJECT
+DOMAIN-SUFFIX, admobile.net.cn, REJECT
+DOMAIN-SUFFIX, popadshop.com, REJECT
+DOMAIN-SUFFIX, admobile.vip, REJECT
+DOMAIN-SUFFIX, yksdks.com, REJECT
+DOMAIN-SUFFIX, dutils.com, REJECT
+DOMAIN, init.sms.mob.com, DIRECT
+DOMAIN, sdkapi.sms.mob.com, DIRECT
+DOMAIN, code.sms.mob.com, DIRECT
+DOMAIN-SUFFIX, mob.com, REJECT
+DOMAIN-SUFFIX, opadlink.com, REJECT
+DOMAIN-SUFFIX, staevent.work, REJECT
+DOMAIN-SUFFIX, openinstall.online, REJECT
+DOMAIN-SUFFIX, statchannel.store, REJECT
+DOMAIN-SUFFIX, oplinking.com, REJECT
+DOMAIN-SUFFIX, deepinstall.com, REJECT
+DOMAIN-SUFFIX, openinstall.com, REJECT
+DOMAIN-SUFFIX, installtongji.top, REJECT
+DOMAIN-SUFFIX, openlink.cc, REJECT
+DOMAIN-SUFFIX, opstatistics.com, REJECT
+DOMAIN-SUFFIX, installtongji.online, REJECT
+DOMAIN-SUFFIX, statschannel.xyz, REJECT
+DOMAIN-SUFFIX, staevent.xyz, REJECT
+DOMAIN-SUFFIX, opstatistics.cn, REJECT
+DOMAIN-SUFFIX, openinstall.top, REJECT
+DOMAIN-SUFFIX, openinstall.io, REJECT
+DOMAIN-SUFFIX, statsinstall.xyz, REJECT
+DOMAIN-SUFFIX, statchannel.top, REJECT
+DOMAIN-SUFFIX, adfunlink.com, REJECT
+DOMAIN-SUFFIX, ubixioe.com, REJECT
+DOMAIN-SUFFIX, iytcdn.com, REJECT
+DOMAIN-SUFFIX, toponadss.com, REJECT
+DOMAIN-SUFFIX, toponad.com, REJECT
+DOMAIN-SUFFIX, motowoo.com, REJECT
+DOMAIN, guide2.bianxianmao.com, REJECT
+DOMAIN, sdk.zhangyuyidong.cn, REJECT
+DOMAIN, sdklog.zhangyuyidong.cn, REJECT
+DOMAIN-SUFFIX, adintl.cn, REJECT
+DOMAIN-SUFFIX, adtaipo.com, REJECT
+DOMAIN-SUFFIX, kuaiyiad.com, REJECT
+DOMAIN-SUFFIX, adtianmai.com, REJECT
+DOMAIN-SUFFIX, readgps.com, REJECT
+DOMAIN-SUFFIX, fanglinad.com, REJECT
+DOMAIN-SUFFIX, 17admob.com, REJECT
+DOMAIN-SUFFIX, slyxmobi.com, REJECT
+DOMAIN-SUFFIX, mobrtb.com, REJECT
+DOMAIN-SUFFIX, maplehaze.cn, REJECT
+DOMAIN-SUFFIX, lnk0.com, REJECT
+DOMAIN-SUFFIX, bridgeoos.com, REJECT
+DOMAIN-SUFFIX, anythinktech.com, REJECT
+DOMAIN-SUFFIX, birdgesdk.com, REJECT
+DOMAIN-SUFFIX, anyrtb.com, REJECT
+DOMAIN-SUFFIX, combocn.com, REJECT
+DOMAIN-SUFFIX, beanxin.com, REJECT
+DOMAIN-SUFFIX, letway.cn, REJECT
+DOMAIN-SUFFIX, newitai.com, REJECT
+DOMAIN-SUFFIX, fireluck.cn, REJECT
+DOMAIN-SUFFIX, setway.cn, REJECT
+DOMAIN-SUFFIX, artcto.com, REJECT
+DOMAIN-SUFFIX, wayio.cn, REJECT
+DOMAIN-SUFFIX, iaddata.com, REJECT
+DOMAIN, ad-evods.tianya.tv, REJECT
+DOMAIN-SUFFIX, tuia.cn, REJECT
+DOMAIN-SUFFIX, 66mobi.com, REJECT
+DOMAIN-SUFFIX, xdplt.com, REJECT
+DOMAIN, ads.cup.com.cn, REJECT
+DOMAIN-SUFFIX, adjust.com, REJECT
+DOMAIN-SUFFIX, adjust.io, REJECT
+DOMAIN-SUFFIX, adjust.net.in, REJECT
+DOMAIN-SUFFIX, xinduoad.com, REJECT
+DOMAIN, statis.miwuad.com, REJECT
+DOMAIN-SUFFIX, sigmob.cn, REJECT
+DOMAIN-SUFFIX, richmob.cn, REJECT
+DOMAIN, ad.shunchangzhixing.com, REJECT
+DOMAIN, redirect.shunchangzhixing.com, REJECT
+DOMAIN, api.touch-moblie.com, REJECT
+DOMAIN-SUFFIX, api.touch-moblie.com, REJECT
+DOMAIN, mercury-gateway.ixiaochuan.cn, REJECT
+DOMAIN, adapi.izuiyou.com, REJECT
+DOMAIN-SUFFIX, domob.cn, REJECT
+DOMAIN-SUFFIX, adwangmai.com, REJECT
+DOMAIN-SUFFIX, bxsnews.com, REJECT
+DOMAIN-SUFFIX, ranfenghd.com, REJECT
+DOMAIN-SUFFIX, qchannel01.cn, REJECT
+DOMAIN-SUFFIX, ad.xelements.cn, REJECT
+DOMAIN-SUFFIX, adsrvr.cn, REJECT
+DOMAIN-SUFFIX, adsrvr.org, REJECT
+DOMAIN-SUFFIX, fancydsp.com, REJECT
+DOMAIN-SUFFIX, xcultur.com, REJECT
+DOMAIN-SUFFIX, bayescom.com, REJECT
+DOMAIN-SUFFIX, etoolads.cn, REJECT
+DOMAIN, ad.aggrxinc.com, REJECT
+DOMAIN-SUFFIX, mentamob.com, REJECT
+DOMAIN-SUFFIX, advlion.com, REJECT
+DOMAIN-SUFFIX, shanghailingye.cn, REJECT
+DOMAIN-SUFFIX, shenshiads.com, REJECT
+DOMAIN-SUFFIX, adshenshi.com, REJECT
+DOMAIN-SUFFIX, qidianad.com, REJECT
+DOMAIN-SUFFIX, kuaichuanad.com, REJECT
+DOMAIN-SUFFIX, statisticslinks.com, REJECT
+DOMAIN, adx.zuoyebang.com, REJECT
+DOMAIN-SUFFIX, cxwlad.com, REJECT
+DOMAIN-SUFFIX, ad.gameley.com, REJECT
+DOMAIN-SUFFIX, yiweiads.com, REJECT
+DOMAIN-SUFFIX, adx.52qumao.com, REJECT
+DOMAIN-SUFFIX, hzjizhun.cn, REJECT
+DOMAIN-SUFFIX, hzjizhun.com, REJECT
+DOMAIN-SUFFIX, sogaha.cn, REJECT
+DOMAIN, zxid-m.mobileservice.cn, REJECT
+DOMAIN, xadsmartget.adgain.cn, REJECT
+DOMAIN-SUFFIX, tradplusad.com, REJECT
+DOMAIN-SUFFIX, fancyapi.com, REJECT
+DOMAIN-SUFFIX, medproad.com, REJECT
+DOMAIN-SUFFIX, applovin.com, REJECT
+DOMAIN-SUFFIX, iads.unity3d.com, REJECT
+DOMAIN-SUFFIX, unityads.unity3d.com, REJECT
+DOMAIN-SUFFIX, unityads.unitychina.cn, REJECT
+DOMAIN-SUFFIX, tapjoy.com, REJECT
+DOMAIN-SUFFIX, vungle.com, REJECT
+DOMAIN-SUFFIX, adsmoloco.com, REJECT
+DOMAIN-SUFFIX, smadex.com, REJECT
+DOMAIN-SUFFIX, tapad.com, REJECT
+DOMAIN-SUFFIX, adsappier.com, REJECT
+DOMAIN-SUFFIX, inmobi.com, REJECT
+DOMAIN-SUFFIX, inmobicdn.net, REJECT
+DOMAIN-SUFFIX, appsflyersdk.com, REJECT
+DOMAIN-SUFFIX, applvn.com, REJECT
+DOMAIN-SUFFIX, moloco.com, REJECT
+DOMAIN-SUFFIX, rayjump.com, REJECT
+DOMAIN-SUFFIX, rixengine.com, REJECT
+DOMAIN-SUFFIX, amazon-adsystem.com, REJECT
+DOMAIN-SUFFIX, skarb.club, REJECT
+DOMAIN-SUFFIX, skarb.work, REJECT
+DOMAIN-SUFFIX, amplitude.com, REJECT
+DOMAIN-SUFFIX, fivecdm.com, REJECT
+DOMAIN-SUFFIX, doubleverify.com, REJECT
+DOMAIN-SUFFIX, tobidad.cn, REJECT
+DOMAIN-SUFFIX, tobidad.com, REJECT
+DOMAIN, ep7.facebook.com, REJECT
+DOMAIN-KEYWORD, httpdns, REJECT
+DOMAIN-KEYWORD, httpsdns, REJECT
+USER-AGENT, "httpdns*", REJECT
+USER-AGENT, "httpsdns*", REJECT
+USER-AGENT, "Httpdns*", REJECT
+USER-AGENT, "Httpsdns*", REJECT
+URL-REGEX, "^http:\/\/((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)(?:\/v?[0-9]+)?\/(?:sign_)?(?:(?:d|ss)[46]?|resolve)\?", REJECT
+URL-REGEX, "^http:\/\/\[[0-9a-fA-F:]+\](?:\/v?[0-9]+)?\/(?:sign_)?(?:(?:d|ss)[46]?|resolve)\?", REJECT
+DOMAIN, yyapp-httpdns.gslb.yy.com, REJECT
+DOMAIN, union-httpdns.gslb.yy.com, REJECT
+DOMAIN, yuyin-httpdns.gslb.yy.com, REJECT
+DOMAIN, httpdns-v6.gslb.yy.com, REJECT
+URL-REGEX, "^http:\/\/103\.44\.58\.64\/md\?", REJECT
+URL-REGEX, "^http:\/\/cdn\.wup\.huya\.com\/launch\/queryHttpDns", REJECT
+DOMAIN, dns2.q2cdn.com, REJECT
+DOMAIN, httpdns.cctv.com, REJECT
+DOMAIN, dotserver.douyucdn.cn, REJECT
+DOMAIN, hdns.ksyun.com, REJECT
+DOMAIN, httpdns.zybang.com, REJECT
+DOMAIN, httpdns.calorietech.com, REJECT
+URL-REGEX, ^http:\/\/((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\/v\d\/resolv\?, REJECT
+IP-CIDR, 103.41.167.237/32, REJECT, no-resolve
+IP-CIDR, 118.89.204.198/32, REJECT, no-resolve
+IP-CIDR, 182.61.194.7/32, REJECT, no-resolve
+IP-CIDR6, 2402:4e00:1200:ed00:0:9089:6dac:96b6/128, REJECT, no-resolve
+IP-CIDR6, 240c:409f:1000::/128, REJECT, no-resolve
+DOMAIN, httpdns.immomo.com, REJECT
+URL-REGEX, "^http:\/\/((25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?):\d+\/httpdns\/", REJECT
+URL-REGEX, "^http:\/\/\[[0-9a-fA-F:]+\]:\d+\/httpdns\/", REJECT
+DOMAIN, acdn.adnxs.com, REJECT
+DOMAIN, mediation.adnxs.com, REJECT
+DOMAIN, sin3-ib.adnxs.com, REJECT
+DOMAIN, business.msstatic.com, REJECT
+DOMAIN-SUFFIX, v1d.szbdyd.com, REJECT
+URL-REGEX, "^http:\/\/cdn\.wup\.huya\.com\/launch\/queryHttpDns$", REJECT
+DOMAIN-SUFFIX, m1.ad.10010.com, REJECT
+DOMAIN, ad.21cn.com, REJECT
+DOMAIN, ad.k.21cn.com, REJECT
+DOMAIN, admarket.21cn.com, REJECT
+DOMAIN, adshows.21cn.com, REJECT
+IP-CIDR, 122.229.8.47/32, REJECT, no-resolve
+IP-CIDR, 122.229.29.89/32, REJECT, no-resolve
+URL-REGEX, "^http:\/\/p\.kuaidi100\.com\/mobile\/mobileapi\.do", REJECT-DICT
+URL-REGEX, "^http:\/\/p\.kuaidi100\.com\/advertisement\/", REJECT-DICT
+DOMAIN, mall-dsp2.qinlinkeji.com, REJECT // 首页商品信息流
+DOMAIN, mallapi2.qinlinkeji.com, REJECT // 商城页面
+DOMAIN, open-pixon.ads-pixiv.net, REJECT
+
+[Rewrite]
+request if ${url} ~= /^https?:\/\/cdn\.wup\.huya\.com\/monitor\/monitor\.jsp/i then reject(404)
+request if ${url} ~= /^https:\/\/msglb\.91160\.com\/msg\/outer\/broker\/get$/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/gw-cn\.jiaoliuqu\.com\/taqu-im-broadcast-srv\/v\d\/Comet\/get\?/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/cdn\.web\.chelaile\.net\.cn\/info-flow\/index\.html/i then reject(404)
+request if ${url} ~= /^http:\/\/mercury-gateway\.ixiaochuan\.cn\/mercury\/v1\/ad\//i then reject(404)
+request if ${url} ~= /^https:\/\/apiwz\.midukanshu\.com\/advert\/getPopup$/i then reject(404)
+request if ${url} ~= /^https:\/\/apiwz\.midukanshu\.com\/advert\/treasureInfo$/i then reject(404)
+request if ${url} ~= /^https:\/\/apiwz\.midukanshu\.com\/config\/getAds$/i then reject(404)
+request if ${url} ~= /^http:\/\/img\.dailmo\.com\/img\/61\/23c7125bfe6166d69f3bff5b0ca4d31e\.jpg/i then reject(404)
+request if ${url} ~= /^http:\/\/img\.dailmo\.com\/img\/50\/edb40c6392f848df37f9c31d8a6f90f6\.jpg/i then reject(404)
+request if ${url} ~= /^http:\/\/img\.dailmo\.com\/img\/6\/90585d9e96c73dd49644af57d8501624\.jpg/i then reject(404)
+request if ${url} ~= /^http:\/\/img\.dailmo\.com\/img\/5\/6cb2aa237ce1f65944aa1ecb29fbdeef\.jpg/i then reject(404)
+request if ${url} ~= /^http:\/\/img\.allahall\.com\/img\/61\/23c7125bfe6166d69f3bff5b0ca4d31e\.jpg/i then reject(404)
+request if ${url} ~= /^http:\/\/img\.allahall\.com\/img\/50\/edb40c6392f848df37f9c31d8a6f90f6\.jpg/i then reject(404)
+request if ${url} ~= /^http:\/\/img\.allahall\.com\/img\/6\/90585d9e96c73dd49644af57d8501624\.jpg/i then reject(404)
+request if ${url} ~= /^http:\/\/img\.allahall\.com\/img\/5\/6cb2aa237ce1f65944aa1ecb29fbdeef\.jpg/i then reject(404)
+request if ${url} ~= /^http:\/\/img\.allahall\.com\/img\/59\/6a13a75dfe46ebfdac96bd27ef098885\.jpg/i then reject(404)
+request if ${url} ~= /^http:\/\/app\.zhoudamozi\.com\/ad\/.+/i then reject(200)
+request if ${url} ~= /^https:\/\/hfapp-service\.qweather\.net\/v2\.0\/app\/ad\/list\?/i then reject_dict(200)
+request if ${url} ~= /^http:\/\/home\.umetrip\.com\/gateway\/api\/umetrip\/native/i then reject(404)
+request if ${url} ~= /^http:\/\/umerp\.umetrip\.com\/gateway\/api\/umetrip\/native/i then reject(404)
+request if ${url} ~= /^https:\/\/client\.app\.coc\.10086\.cn\/biz-orange\/DN\/init\/startInit$/i then reject(404)
+request if ${url} ~= /^https?:\/\/ecard\.shenzhentong\.com\/wxweb\/bwxppub2\/QryAdvertList\.do/i then reject(200)
+request if ${url} ~= /^https?:\/\/mob\.mddcloud\.com\.cn\/adApi\/advert\/(first|third)part\/advertList/i then reject_dict(200)
+request if ${url} ~= /^http?:\/\/sfo\.mddcloud\.com\.cn\/api\/v2\/sfo\/popup_displays?/i then reject_dict(200)
+request if ${url} ~= /^https?:\/\/tower\.ubixioe\.com\/mob\/mediation/i then reject(404)
+request if ${url} ~= /^https?:\/\/conf-darwin\.xycdn\.com/i then reject_dict(200)
+request if ${url} ~= /^https?:\/\/sdk1xyajs\.data\.kuiniuca\.com/i then reject(404)
+request if ${url} ~= /^https:\/\/gw\.chuangkit\.com\/team\/app\/common\/ad\//i then reject_dict(200)
+request if ${url} ~= /^https:\/\/qiye\.gaoding\.com\/api\/v3\/oc\/v2\/delivery-pits\/ios-splash\//i then reject_dict(200)
+request if ${url} ~= /^https:\/\/p0\.pipi\.cn\/(adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.jpg\?imageMogr2\/quality\//i then reject_dict(200)
+request if ${url} ~= /^https:\/\/p0\.pipi\.cn\/(adAdmin|mediaplus\/maoyantong_ads_fe)\/\w+\.(jpg|png)\?imageMogr2\/thumbnail\/(860x0|!165x165|!1049x1169)/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/api\.zcool\.com\.cn\/v\d\.\d\.\d\/common\/open-screen/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/shealthyapi\.senssun\.com\/v1\/app\/banner\/findByType\?type=bottom$/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/lanfanapp\.com\/api\/v1\/ads\//i then reject_dict(200)
+request if ${url} ~= /^https:\/\/client-api-v2\.oray\.com\/materials\/SLCC_IOS_STARTUP/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/client-api-v2\.oray\.com\/materials\/SLCC_IOS_DEVICE/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/client-api-v2\.oray\.com\/materials\/SUNLOGIN_CLIENT_IOS_PROMOTION/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/app\.10099\.com\.cn\/contact-web\/api\/version\/getFlashScreenPage/i then reject(404)
+request if ${url} ~= /^https:\/\/api\.flydigi\.com\/android\/v2\/ad/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/cdn\.cmgadx\.com\/sdk\/pool\//i then reject_dict(200)
+request if ${url} ~= /^https:\/\/qadx\.qinlinad\.com\/ad\//i then reject_dict(200)
+request if ${url} ~= /^https:\/\/d\.socdm\.com\/adsv\//i then reject_dict(200)
+response if ${url} ~= /^https?:\/\/m\.client\.10010\.com\/mobileService\/customer\/accountListData\.htm/i then response.body.mock("json", "{\"imgIndex\":\"0\",\"adv\":{\"startup_adv\":{\"advCntList\":[],\"buttonList\":[]}},\"respCode\":\"0000\"}")
+response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then response.body.replace(/<GetADResult>\.\*\?<\/GetADResult>/, "<GetADResult>{\"ret\":0,\"msg\":\"正常\",\"err_code\":0,\"data\":{\"ad\":[]}}</GetADResult>")
+response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
+
+[MitM]
+hostname=api.dianyinduoduo.com, msglb.91160.com, gw-cn.jiaoliuqu.com, api.zcool.com.cn, api.ahmobile.cn, api.wfdata.club, apiwz.midukanshu.com, app.zhoudamozi.com, conf-darwin.xycdn.com, ecard.shenzhentong.com, gw.chuangkit.com, hfapp-service.qweather.net, home.umetrip.com, img.allahall.com, img.dailmo.com, mercury-gateway.ixiaochuan.cn, mob.mddcloud.com.cn, p0.pipi.cn, qiye.gaoding.com, sdk1xyajs.data.kuiniuca.com, sfo.mddcloud.com.cn, shealthyapi.senssun.com, tower.ubixioe.com, umerp.umetrip.com, lanfanapp.com, api.xiachufang.com, client.app.coc.10086.cn, cdn.cmgadx.com, qadx.qinlinad.com, cdn.web.chelaile.net.cn, d.socdm.com, m.client.10010.com, cmds.omesoft.com, api.fenxianglife.com

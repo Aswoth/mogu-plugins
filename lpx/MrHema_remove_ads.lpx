@@ -1,0 +1,92 @@
+#!name=盒马去广告
+#!desc=移除开屏广告、首页信息流广告及推广、弹窗广告、悬浮挂件、商品及购物车推荐，精简底栏及我的页面。
+#!openUrl=https://apps.apple.com/app/id1063183999
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/MrHema.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+request if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querysinglepage\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.sg\.queryinnerpage\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.lbs\.address\.getshopinfolist\//i then reject_dict(200)
+
+response if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.queryindexpage\//i then response.json.jq("if .data.pageType == \"1\" then .data.scenes |= map(select(.bizCode == \"three_row_circle\")) else . end")
+
+response if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querytabfeedstream\//i then response.json.jq("if .data.pageType == \"5\" then .data.scenes |= map(select(.sceneType == \"100028\")) else . end")
+
+response if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/(mtop\.wdk\.render\.querychannelpage|mtop\.wdk\.render\.querysinglepage)\//i then response.json.jq("if .data.pageType == \"216\" then .data.scenes |= map(select(.bizCode == \"shop_walk_top_picture\" or .bizCode == \"shop_walk_shop_util\" or .bizCode == \"shop_walk_bistro\")) else . end")
+
+request if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querysearchpage\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.sg\.querysinglescene\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.melon\.collocation\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.fc\.recommend\.feedscommondservice\//i then reject_dict(200)
+
+response if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/mtop\.wdk\.render\.querymypage\//i then response.json.jq(".data.scenes |= map(select(.sceneType | IN(\"400029\", \"400005\", \"400010\", \"400002\", \"400004\", \"400015\")))")
+
+response if ${url} ~= /^https:\/\/acs-m\.freshippo\.com\/gw\/(mtop\.wdk\.lbs\.location\.shopdecideapi\.decideformain|mtop\.wdk\.lbs\.location\.shopdecideapi\.decidebygeocode)\//i then response.json.jq(".data.groupList |= map(.ext.tabConfig |= (.normalTabList = (.normalTabList | map(select(.code as $c | [\"HOME\", \"CLASSIFY\", \"CART\", \"MY\"] | any(. == $c)))) | .normalTabListB = (.normalTabListB | map(select(.code as $c | [\"HOME\", \"CLASSIFY\", \"CART\", \"MY\"] | any(. == $c))))))")
+request if ${url} ~= /^https:\/\/ucdc\d?-upaas\.uc\.cn\/api\/v\d\/dns_query\?/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/gw\.alicdn\.com\/mt\//i then reject(404)
+request if ${url} ~= /^https:\/\/gw\.alicdn\.com\/tfs\/.+\d{3,4}-\d{4}/i then reject(404)
+request if ${url} ~= /^https:\/\/gw\.alicdn\.com\/tps\/.+\d{3,4}-\d{4}/i then reject(404)
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.taobao\.idle\.home\.welcome/i then reject(404)
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvertiseapi\.queryloadingbanner\//i then reject_dict(200)
+request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.life\.popup\.get\//i then reject_dict(200)
+
+[Rule]
+DOMAIN, ossgw.alicdn.com, REJECT
+DOMAIN, ems.youku.com, REJECT
+DOMAIN, hudong.alicdn.com, REJECT
+DOMAIN, et.tanx.com, REJECT
+DOMAIN, df.tanx.com, REJECT
+DOMAIN, opehs.tanx.com, REJECT
+DOMAIN, beacon-api.aliyuncs.com, REJECT
+DOMAIN, adash.man.aliyuncs.com, REJECT
+DOMAIN, adashx.m.taobao.com, REJECT
+DOMAIN, applog.uc.cn, REJECT
+DOMAIN, atoken.m.taobao.com, REJECT
+AND, ((DOMAIN-KEYWORD, adash), (DOMAIN-SUFFIX, ut.taobao.com)), REJECT
+DOMAIN, baichuan-sdk.alicdn.com, REJECT
+DOMAIN, acs4baichuan.m.taobao.com, REJECT
+DOMAIN, nbsdk-baichuan.alicdn.com, REJECT
+DOMAIN, api.sm.cn, REJECT
+DOMAIN, c.sm.cn, REJECT
+DOMAIN, content-understand-strategy.sm.cn, REJECT
+DOMAIN, hc-ssp.sm.cn, REJECT
+DOMAIN, sdk-log.partner.sm.cn, REJECT
+DOMAIN, partner.uc.cn, REJECT
+DOMAIN, cpc-service-square.aiclk.com, REJECT
+DOMAIN, logrcv.aiclk.com, REJECT
+DOMAIN, acjs.aliyun.com, REJECT
+DOMAIN, retcode.alicdn.com, REJECT
+DOMAIN, arms-retcode.aliyuncs.com, REJECT
+DOMAIN, huichuan.sm.cn, REJECT
+DOMAIN, huichuan-mc.sm.cn, REJECT
+DOMAIN, httpdns.alicdn.com, REJECT
+DOMAIN, httpdns-api.aliyuncs.com, REJECT
+DOMAIN, httpdns-sc.aliyuncs.com, REJECT
+IP-CIDR, 203.107.1.0/24, REJECT, no-resolve
+DOMAIN, amdc.alipay.com, REJECT
+DOMAIN, ucdc.upaas.quark.cn, REJECT
+DOMAIN, httpdns.danuoyi.tbcache.com, REJECT
+URL-REGEX, "^http:\/\/amdc\.m\.taobao\.com\/amdc\/mobileDispatch", REJECT
+URL-REGEX, "^http:\/\/47\.246\.103\.9\/amdc\/mobileDispatch", REJECT
+URL-REGEX, "^http:\/\/47\.246\.103\.10\/amdc\/mobileDispatch", REJECT
+URL-REGEX, "^http:\/\/59\.82\.113\.10\/amdc\/mobileDispatch", REJECT
+URL-REGEX, "^http:\/\/59\.82\.113\.219\/amdc\/mobileDispatch", REJECT
+DOMAIN, xpis-xcdn.youku.com, REJECT
+DOMAIN, pre-xpis-xcdn.youku.com, REJECT
+DOMAIN, xpis-tel-xcdn.youku.com, REJECT
+DOMAIN, xpis-mob-xcdn.youku.com, REJECT
+
+[MitM]
+hostname=acs-m.freshippo.com, ucdc2-upaas.uc.cn, acs.m.goofish.com, acs.m.taobao.com, gw.alicdn.com, iyes.youku.com

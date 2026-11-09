@@ -1,0 +1,58 @@
+#!name=百度网盘去广告
+#!desc=移除开屏广告、首页卡片广告、传输页面广告、各类弹窗，精简侧拉抽屉和我的页面。
+#!openUrl=https://apps.apple.com/app/id547166701
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/BaiduNetDisk.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+request if ${url} ~= /^https:\/\/pan\.baidu\.com\/api\/getconfig\?/i then reject_dict(200)
+request if ${url} ~= /^https:\/\/pan\.baidu\.com\/api\/getsyscfg\?/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/pan\.baidu\.com\/api\/taskscore\/tasklist\?/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/pan\.baidu\.com\/act\/api\/activityentry\?/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/pan\.baidu\.com\/rest\/\d\.\d\/pcs\/adv\?/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/pan\.baidu\.com\/api\/plugin\/get\?/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/pan\.baidu\.com\/recommend\/query\/list\?/i then reject_dict(200)
+
+response if ${url} ~= /^https:\/\/pan\.baidu\.com\/feed\/kingkongdistrict\?/i then response.json.jq(".data.data |= map(select(.type != \"novel\" and .type != \"shortplay\" and .type != \"print\" and .type != \"job_hunt\"))")
+request if ${url} ~= /^https?:\/\/mobads-pre-config\.cdn\.bcebos\.com\/preload\.php/i then reject(200)
+ 
+[Rule]
+DOMAIN, afd.baidu.com, REJECT
+DOMAIN, als.baidu.com, REJECT
+DOMAIN, bgg.baidu.com, REJECT
+DOMAIN, cpro.baidustatic.com, REJECT
+DOMAIN, feed-image.baidu.com, REJECT
+DOMAIN, click-bes.baidu.com, REJECT
+DOMAIN, eclick.baidu.com, REJECT
+DOMAIN, mobads-logs.baidu.com, REJECT
+DOMAIN, mobads-pre-config.cdn.bcebos.com, REJECT
+DOMAIN, mobads.baidu.com, REJECT
+DOMAIN, nadvideo2.baidu.com, REJECT
+DOMAIN, wn.pos.baidu.com, REJECT
+DOMAIN, miniapp-ad.cdn.bcebos.com, REJECT
+DOMAIN, hm.baidu.com, REJECT
+DOMAIN, dlswbr.baidu.com, REJECT
+DOMAIN, miao.baidu.com, REJECT
+DOMAIN-SUFFIX, union.baidu.cn, REJECT
+DOMAIN-SUFFIX, union.baidu.com, REJECT
+DOMAIN, httpdns.baidu.com, REJECT
+DOMAIN, httpsdns.baidu.com, REJECT
+DOMAIN, httpdns.bcelive.com, REJECT
+DOMAIN, httpdns.baidubce.com, REJECT
+DOMAIN, httpdns.n.shifen.com, REJECT
+IP-CIDR, 186.76.76.200/32, REJECT, no-resolve
+IP-CIDR, 180.76.76.200/32, REJECT, no-resolve
+
+[MitM]
+hostname=pan.baidu.com, mobads-pre-config.cdn.bcebos.com

@@ -1,0 +1,41 @@
+#!name=快影去广告
+#!desc=移除开屏广告、信息流推广、横幅推广，移除悬浮部件。
+#!openUrl=https://apps.apple.com/app/id1195860596
+#!author=可莉🅥[https://github.com/luestr/ProxyResource/blob/main/README.md]
+#!tag=去广告
+#!system=
+#!system_version=
+#!loon_version=3.5.1(998)
+#!homepage=https://hub.kelee.one
+#!icon=https://raw.githubusercontent.com/luestr/IconResource/main/App_icon/120px/KwaiVideoeditor.png
+#!date=2026-10-02 13:57:49
+
+[Rewrite]
+request if ${url} ~= /^https:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/resource\/get\?/i then reject_dict(200)
+
+response if ${url} ~= /^https:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/banner\/common\/getBannerByTypeV2\?/i then response.json.jq("del(.list[] | select(.bannerChannelName == \"活动\"))")
+response if ${url} ~= /^https:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/banner\/common\/getAllBannerPage\?/i then response.json.jq("del(.data[] | select(.bannerChannelName == \"活动\"))")
+
+request if ${url} ~= /^https:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/banner\/common\/getBannerByType\?/i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/merchant\/ad\//i then reject_dict(200)
+
+request if ${url} ~= /^https:\/\/api\.kmovie\.gifshow\.com\/rest\/n\/kmovie\/app\/resource\/activity\/pendant\?/i then reject_dict(200)
+
+[Rule]
+DOMAIN, gdfp.gifshow.com, REJECT
+DOMAIN, open.e.kuaishou.com, REJECT
+DOMAIN, open.e.kuaishou.cn, REJECT
+DOMAIN, adtrack.e.kuaishou.com, REJECT
+DOMAIN-SUFFIX, partner.gifshow.com, REJECT
+DOMAIN-SUFFIX, adukwai.com, REJECT
+DOMAIN-SUFFIX, adkwai.com, REJECT
+DOMAIN, cdndns.kwd.inkuai.com, REJECT
+DOMAIN, hdns.k-dyn.com, REJECT
+DOMAIN, kuaishou.httpdns.pro, REJECT
+DOMAIN, httpdns.kwd.inkuai.com, REJECT
+DOMAIN, apidns.kwd.inkuai.com, REJECT
+DOMAIN, apidns-js.kwd.inkuai.com, REJECT
+
+[MitM]
+hostname=api.kmovie.gifshow.com
