@@ -72,7 +72,7 @@ request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.mtopadvert
 request if ${url} ~= /^https:\/\/acs\.m\.taobao\.com\/gw\/mtop\.film\.life\.popup\.get\//i then reject_dict(200)
 
 [Script]
-response if ${url} ~= /^https:\/\/ocean\.shuqireader\.com\/sqios\/render\/render\/page\/bookstore$/i then script("https://kelee.one/Resource/JavaScript/ShuQiCenterReader/ShuQiCenterReader_remove_ads.js") with tag="移除书城横幅和阅读广告", requires_body=true
+response if ${url} ~= /^https:\/\/ocean\.shuqireader\.com\/sqios\/render\/render\/page\/bookstore$/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/ShuQiCenterReader/ShuQiCenterReader_remove_ads.js") with tag="移除书城横幅和阅读广告", requires_body=true
 
 [MitM]
 hostname=ocean.shuqireader.com, huichuan.sm.cn, ucdc2-upaas.uc.cn, acs.m.goofish.com, acs.m.taobao.com, gw.alicdn.com, iyes.youku.com

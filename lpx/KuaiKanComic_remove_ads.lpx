@@ -304,13 +304,13 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/(cdn-)?api\.kkmh\.com\/v\d\/ironman\/comic\/recommend/i then script("https://kelee.one/Resource/JavaScript/KuaiKanComic/KuaiKanComic_remove_ads.js") with tag="修改广告参数", requires_body=true
+response if ${url} ~= /^https:\/\/(cdn-)?api\.kkmh\.com\/v\d\/ironman\/comic\/recommend/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/KuaiKanComic/KuaiKanComic_remove_ads.js") with tag="修改广告参数", requires_body=true
 
-response if ${url} ~= /^https:\/\/(cdn-)?api\.kkmh\.com\/v\d\/ironman\/discovery_v\d\/tab_list_v\d/i then script("https://kelee.one/Resource/JavaScript/KuaiKanComic/KuaiKanComic_remove_ads.js") with tag="精简首页热门标签", requires_body=true
+response if ${url} ~= /^https:\/\/(cdn-)?api\.kkmh\.com\/v\d\/ironman\/discovery_v\d\/tab_list_v\d/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/KuaiKanComic/KuaiKanComic_remove_ads.js") with tag="精简首页热门标签", requires_body=true
 
-response if ${url} ~= /^https:\/\/(cdn-)?social\.kkmh\.com\/v\d\/graph\/homepage\/comicVideo\/v\d\/configs/i then script("https://kelee.one/Resource/JavaScript/KuaiKanComic/KuaiKanComic_remove_ads.js") with tag="精简社区标签", requires_body=true
+response if ${url} ~= /^https:\/\/(cdn-)?social\.kkmh\.com\/v\d\/graph\/homepage\/comicVideo\/v\d\/configs/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/KuaiKanComic/KuaiKanComic_remove_ads.js") with tag="精简社区标签", requires_body=true
 
-response if ${url} ~= /^https:\/\/(cdn-)?social\.kkmh\.com\/v\d\/graph\/unified_feed$/i then script("https://kelee.one/Resource/JavaScript/KuaiKanComic/KuaiKanComic_remove_ads.js") with tag="精简社区信息流", requires_body=true
+response if ${url} ~= /^https:\/\/(cdn-)?social\.kkmh\.com\/v\d\/graph\/unified_feed$/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/KuaiKanComic/KuaiKanComic_remove_ads.js") with tag="精简社区信息流", requires_body=true
 
 [MitM]
 hostname=api.kkmh.com, cdn-api.kkmh.com, social.kkmh.com, cdn-social.kkmh.com, h5.kuaikanmanhua.com, cdn-h5.kuaikanmanhua.com, pay.kkmh.com, cdn-pay.kkmh.com, shop.kkmh.com, cdn-shop.kkmh.com, topic.kkmh.com, cdn-topic.kkmh.com, msglb.91160.com, gw-cn.jiaoliuqu.com, api.zcool.com.cn, api.ahmobile.cn, api.wfdata.club, apiwz.midukanshu.com, app.zhoudamozi.com, conf-darwin.xycdn.com, ecard.shenzhentong.com, gw.chuangkit.com, hfapp-service.qweather.net, home.umetrip.com, img.allahall.com, img.dailmo.com, mercury-gateway.ixiaochuan.cn, mob.mddcloud.com.cn, p0.pipi.cn, qiye.gaoding.com, sdk1xyajs.data.kuiniuca.com, sfo.mddcloud.com.cn, shealthyapi.senssun.com, tower.ubixioe.com, umerp.umetrip.com, lanfanapp.com, api.xiachufang.com, client.app.coc.10086.cn, cdn.cmgadx.com, qadx.qinlinad.com, cdn.web.chelaile.net.cn, d.socdm.com, m.client.10010.com, cmds.omesoft.com, api.fenxianglife.com

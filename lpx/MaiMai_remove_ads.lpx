@@ -66,7 +66,7 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\?/i then script("https://kelee.one/Resource/JavaScript/MaiMai/MaiMai_remove_ads.js") with tag="移除信息流和评论区大块广告", requires_body=true
+response if ${url} ~= /^https:\/\/(h3\.)?open\.taou\.com\/maimai\/(feed|gossip)\/v\d\/(focus_feed|gossip_detail_comment|feed_detail_comment?)\?/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/MaiMai/MaiMai_remove_ads.js") with tag="移除信息流和评论区大块广告", requires_body=true
 
 [Rule]
 DOMAIN-KEYWORD, adstrategy, REJECT

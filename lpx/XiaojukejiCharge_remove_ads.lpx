@@ -19,7 +19,7 @@ request if ${url} ~= /^https:\/\/energy\.xiaojukeji\.com\/lego\/api\/orderSprint
 
 request if ${url} ~= /^https:\/\/energy\.xiaojukeji\.com\/station-api\/search\/preWords$/i then reject_dict(200)
 
-response if ${url} ~= /^https:\/\/am\.didistatic\.com\/static\/am\/cf-terminal\/epower\/epower-thanos-app\/\d+\.\d+\.\d+\/pages\/people\/index\.js$/i then response.body.mock_file("text", "https://kelee.one/Resource/JavaScript/XiaojukejiCharge/XiaojukejiCharge_remove_ads.js", 200)
+response if ${url} ~= /^https:\/\/am\.didistatic\.com\/static\/am\/cf-terminal\/epower\/epower-thanos-app\/\d+\.\d+\.\d+\/pages\/people\/index\.js$/i then response.body.mock_file("text", "https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/XiaojukejiCharge/XiaojukejiCharge_remove_ads.js", 200)
 
 [Rule]
 AND, ((URL-REGEX, ^http:\/\/119\.29\.29\.90\/d\?), (USER-AGENT, %E5%98%80%E5%97%92%E5%87%BA%E8%A1%8C*)), DIRECT

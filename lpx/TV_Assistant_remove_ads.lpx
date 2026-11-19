@@ -64,7 +64,7 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_tab_red_dot\?user-tag=1$/i then script("https://kelee.one/Resource/JavaScript/TV_Assistant/TV_Assistant_remove_ads.js") with tag="移除底栏视频标签", requires_body=true
+response if ${url} ~= /^https:\/\/saas\.hpplay\.cn\/api\/lebo-desk\/endpoint\/app-resource\/app_tab_red_dot\?user-tag=1$/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/TV_Assistant/TV_Assistant_remove_ads.js") with tag="移除底栏视频标签", requires_body=true
 
 [Rule]
 DOMAIN-KEYWORD, adstrategy, REJECT

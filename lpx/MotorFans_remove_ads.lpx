@@ -73,7 +73,7 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/api\.58moto\.com\/expands\/config\/appWholeConfig\?key=app_whole_config$/i then script("https://kelee.one/Resource/JavaScript/MotorFans/MotorFans_remove_ads.js") with tag="修改配置", requires_body=true
+response if ${url} ~= /^https:\/\/api\.58moto\.com\/expands\/config\/appWholeConfig\?key=app_whole_config$/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/MotorFans/MotorFans_remove_ads.js") with tag="修改配置", requires_body=true
 
 [Rule]
 DOMAIN-KEYWORD, adstrategy, REJECT

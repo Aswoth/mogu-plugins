@@ -65,13 +65,13 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/api\.chenlongtech\.cn\/v\d\/lover\/productList/i then script("https://kelee.one/Resource/JavaScript/Uki/Uki_remove_ads.js") with tag="移除匹配卡横幅", requires_body=true
+response if ${url} ~= /^https:\/\/api\.chenlongtech\.cn\/v\d\/lover\/productList/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/Uki/Uki_remove_ads.js") with tag="移除匹配卡横幅", requires_body=true
 
-response if ${url} ~= /^https:\/\/api\.chenlongtech\.cn\/v\d\/friends\/closeFriend\/home/i then script("https://kelee.one/Resource/JavaScript/Uki/Uki_remove_ads.js") with tag="移除密友横幅", requires_body=true
+response if ${url} ~= /^https:\/\/api\.chenlongtech\.cn\/v\d\/friends\/closeFriend\/home/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/Uki/Uki_remove_ads.js") with tag="移除密友横幅", requires_body=true
 
-response if ${url} ~= /^https:\/\/api\.chenlongtech\.cn\/v\d\/party\/config$/i then script("https://kelee.one/Resource/JavaScript/Uki/Uki_remove_ads.js") with tag="移除娱乐页面横幅和悬浮窗配置", requires_body=true
+response if ${url} ~= /^https:\/\/api\.chenlongtech\.cn\/v\d\/party\/config$/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/Uki/Uki_remove_ads.js") with tag="移除娱乐页面横幅和悬浮窗配置", requires_body=true
 
-response if ${url} ~= /^https:\/\/api\.chenlongtech\.cn\/v1\/post\/fetchSearchRecommend$/i then script("https://kelee.one/Resource/JavaScript/Uki/Uki_remove_ads.js") with tag="移除广场搜索填充词", requires_body=true
+response if ${url} ~= /^https:\/\/api\.chenlongtech\.cn\/v1\/post\/fetchSearchRecommend$/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/Uki/Uki_remove_ads.js") with tag="移除广场搜索填充词", requires_body=true
 
 [Rule]
 DOMAIN-KEYWORD, adstrategy, REJECT

@@ -89,9 +89,9 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/gateway\.hibixin\.com\/resource\/v\d\/common\/tab\/query$/i then script("https://kelee.one/Resource/JavaScript/Bixin/common_tab.js") with tag="精简首页标签", requires_body=true
+response if ${url} ~= /^https:\/\/gateway\.hibixin\.com\/resource\/v\d\/common\/tab\/query$/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/Bixin/common_tab.js") with tag="精简首页标签", requires_body=true
 
-response if ${url} ~= /^https:\/\/gateway\.hibixin\.com\/resource\/v\d\/my\/page$/i then script("https://kelee.one/Resource/JavaScript/Bixin/my_page.js") with tag="精简我的页面", requires_body=true
+response if ${url} ~= /^https:\/\/gateway\.hibixin\.com\/resource\/v\d\/my\/page$/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/Bixin/my_page.js") with tag="精简我的页面", requires_body=true
 
 [Rule]
 DOMAIN-KEYWORD, adstrategy, REJECT

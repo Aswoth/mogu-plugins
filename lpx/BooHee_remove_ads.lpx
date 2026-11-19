@@ -76,7 +76,7 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/plaza-flow\?/i then script("https://kelee.one/Resource/JavaScript/BooHee/BooHee_remove_ads.js") with tag="移除广场推荐页面横幅", requires_body=true
+response if ${url} ~= /^https:\/\/api\.boohee\.com\/meta-interface\/v1\/index\/plaza-flow\?/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/BooHee/BooHee_remove_ads.js") with tag="移除广场推荐页面横幅", requires_body=true
 
 [Rule]
 DOMAIN-KEYWORD, adstrategy, REJECT

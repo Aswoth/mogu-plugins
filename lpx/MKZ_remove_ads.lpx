@@ -66,7 +66,7 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/base\.mkzcdn\.com\/app\/config\//i then script("https://kelee.one/Resource/JavaScript/MKZ/MKZ_remove_ads.js") with tag="配置修改", requires_body=true
+response if ${url} ~= /^https:\/\/base\.mkzcdn\.com\/app\/config\//i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/MKZ/MKZ_remove_ads.js") with tag="配置修改", requires_body=true
 
 [Rule]
 DOMAIN-KEYWORD, adstrategy, REJECT

@@ -63,8 +63,8 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/www\.flyert\.com\.cn\/api\/mobile\/index\.php\?version=5/i then script("https://kelee.one/Resource/JavaScript/FlyerTea/FlyerTea_remove_ads.js") with tag="移除板块广告", requires_body=true
-response if ${url} ~= /^https:\/\/www\.flyert\.com\.cn\/api\/mobile\/index\.php\?module=plugin&id=k_misign:sign/i then script("https://kelee.one/Resource/JavaScript/FlyerTea/FlyerTea_remove_ads.js") with tag="移除签到弹窗广告", requires_body=true
+response if ${url} ~= /^https:\/\/www\.flyert\.com\.cn\/api\/mobile\/index\.php\?version=5/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/FlyerTea/FlyerTea_remove_ads.js") with tag="移除板块广告", requires_body=true
+response if ${url} ~= /^https:\/\/www\.flyert\.com\.cn\/api\/mobile\/index\.php\?module=plugin&id=k_misign:sign/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/FlyerTea/FlyerTea_remove_ads.js") with tag="移除签到弹窗广告", requires_body=true
 
 [Rule]
 DOMAIN-KEYWORD, adstrategy, REJECT

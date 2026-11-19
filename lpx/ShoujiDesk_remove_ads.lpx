@@ -62,7 +62,7 @@ response if ${url} ~= /^https?:\/\/cmds\.omesoft\.com\/HypnotistWS\.asmx/i then 
 response if ${url} ~= /^https?:\/\/api\.fenxianglife\.com\/njia\/index\/popup\/v2/i then response.json.jq(".data.list=[]")
 
 [Script]
-response if ${url} ~= /^https:\/\/api\.tdz5\.com\/base\/init\?/i then script("https://kelee.one/Resource/JavaScript/ShoujiDesk/base_init.js") with tag="移除首页广告配置", requires_body=true
+response if ${url} ~= /^https:\/\/api\.tdz5\.com\/base\/init\?/i then script("https://mogu.cc.cd/scripts/kelee.one/Resource/JavaScript/ShoujiDesk/base_init.js") with tag="移除首页广告配置", requires_body=true
 
 [Rule]
 DOMAIN-KEYWORD, adstrategy, REJECT
